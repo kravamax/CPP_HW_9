@@ -4,14 +4,16 @@ using namespace std;
 int main() {
 	int side, number_figure;
 
-	do{
+	do {
 		cout << "Enter size of figure(0 for exit): ";
 		cin >> side;
-		
-		if (side == 0)
-			break;
 
-		if (side < 5) 
+		if (side == 0) {
+			cout << endl << "Good bye!" << endl;
+			break;
+		}
+
+		if (side < 5)
 		{
 			cout << endl << "No! More than 5!" << endl;
 			break;
@@ -34,149 +36,86 @@ int main() {
 		cout << "9.Above the reverse diagonal." << endl;
 		cout << "10.Below the reverse wediagonal." << endl;
 		cin >> number_figure;
-		if (number_figure < 0 || number_figure > 10)
+		if (number_figure < 1 || number_figure > 10)
+		{
 			cout << " Wrong number!" << endl;
+
+		}
 
 		cout << endl;
 
-		switch (number_figure)
+
+		for (int i = 0; i < side; i++)
 		{
-		case 1:
-			for (int i = 0; i < side; i++)
+			for (int j = 0; j < side; j++)
 			{
-				for (int j = 0; j < side; j++)
+				switch (number_figure)
 				{
+				case 1:
 					if (j >= i)			//выше главной диагонали (a)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 2:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
+					break;
+				case 2:
 					if (j <= i)			//ниже главной диагонали (б)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 3:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
+					break;
+				case 3:
 					if (i + j <= side - 1 && j >= i)			//  треугольник вверху (в)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 4:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
+					break;
+				case 4:
 					if (i + j >= side - 1 && j <= i)			//  треугольник внизу (г)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 5:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
+					break;
+
+				case 5:
 					if (i + j >= side - 1 && j <= i || i + j <= side - 1 && j >= i)			// два горизонтальных треугольника (д)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 6:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
+					break;
+				case 6:
 					if (i + j <= side - 1 && j <= i || i + j >= side - 1 && j >= i)			// два вертикальных треугольника (е)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 7:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
-					if (i + j < side - 1 && j <= i)			//  треугольник слева (ж)
+					break;
+				case 7:
+					if (i + j < side && j <= i)			//  треугольник слева (ж)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 8:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
+					break;
+				case 8:
 					if (i + j >= side - 1 && j >= i)			//  треугольник справа (з)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 9:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
-					if ( i+j < side-1 )			//  выше побочной диагонали (и)
+					break;
+				case 9:
+					if (i + j < side)			//  выше побочной диагонали (и)
 						cout << " * ";
 					else
 						cout << "   ";
-				}
-				cout << endl;
-			}
-			break;
-		case 10:
-			for (int i = 0; i < side; i++)
-			{
-				for (int j = 0; j < side; j++)
-				{
-					if (i + j > side - 1)			//  ниже побочной диагонали (к)
+					break;
+				case 10:
+					if (i + j > side - 2)			//  ниже побочной диагонали (к)
 						cout << " * ";
 					else
 						cout << "   ";
+					break;
 				}
-				cout << endl;
 			}
-			break;
-		default:
-			break;
+				cout << endl;
 		}
-		
-	} while (side);
-
-	cout << endl << endl;
-
+		cout << endl;
+	}while (side);
 }
